@@ -8,16 +8,16 @@ router.get("/" , async(req,res)=> {
   res.json({msg:"users work"})
 })
 
-// router.get("/myEmail",auth,async(req,res)=>{
-//   try{
-//     let user=await UserModel.findOne({_id:req.tokenData._id},{email:1})
-//     res.json(user)
-//   }
-//   catch(err){
-//     console.log(err);
-//     res.status(500).json({msg:"err",err})
-//   }
-// })
+router.get("/usersList",authAdmin,async(req,res)=>{
+  try{
+  let user=await UserModel.find({},{password:0})
+  res.json(user);
+  }
+  catch(err){     
+    console.log(err)
+    res.status(500).json({msg:"err",err})
+  }
+  })
 
 router.get("/myInfo",async(req,res)=>{
   let token=req.header("x-api-key");
