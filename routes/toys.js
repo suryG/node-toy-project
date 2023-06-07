@@ -2,8 +2,7 @@ const express= require("express");
 const bcrypt = require("bcrypt");
 const {ToysModel,toyValid} = require("../models/toyModel");
 // const { createToken } = require("../public/js/userModel");
-const { auth,authAdmin } = require("../middlewares/auth");
-const jwt=require("jsonwebtoken")
+const { auth } = require("../middlewares/auth");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
